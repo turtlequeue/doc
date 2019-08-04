@@ -1,0 +1,165 @@
+= JsonPath
+
+[source,javascript,indent=0]
+----
+subscribe({"channel":"#advancedFiltering",     // <1>
+           "jsonPath":{"expression":"$.author"}}) // <2>
+
+----
+<1> can be any channel, as usual
+<2> jsonPath expression filtering
+
+
+jsonPath is a small query language that allows you to easily filter and transform the data coming from a subscription. Removing data can be an efficient way to reduce the network load.
+
+It's original syntax is described there: http://goessner.net/articles/JsonPath/
+
+== Options
+
+.Options
+|===
+|name |default|required|description
+
+|expression
+|N/A
+|optional
+| the jsonPath expression to use. This is what you want to use most of the time. Matched data in every message is returned under the “data" key
+
+|pathExpression
+|N/A
+|optional
+| the jsonPath expression to use - returns the path to matching elements instead of returning the data, under the “path". This can be combined with the “pattern" option, for instance to get all of the data with {pattern“$.", path “$.author"}
+
+
+|asList
+|false
+|optinal
+| return an array of elements, even when the JsonPath expression points to a single element
+|===
+
+
+== JsonPath Syntax
+
+=== Operators
+
+.Operators
+|===
+
+|Operator | Description
+
+| `$`
+| The root element to query. This starts all path expressions.
+
+| `@`
+| The current node being processed by a filter predicate.
+
+| `*`
+| Wildcard. Available anywhere a name or numeric are required.
+
+| `..`
+| Deep scan. Available anywhere a name is required.
+
+| `.<name>`
+| Dot-notation for children elements
+
+| `['<name>' (, '<name>')]`
+| Bracket-notated child or children
+
+| `[<number> (, <number>)]`
+| Array index or indexes
+
+| `[start:end]`
+| Array slice operator
+
+| `[?(<expression>)]`
+| Filter expression. `expression` must evaluate to a boolean value.
+|===
+
+
+=== Functions
+
+Functions can be invoked at the tail end of a path - the input to a function is the output of the path expression.
+The function output is dictated by the function itself.
+
+.Functions
+|===
+|Function | Description | Output
+
+| min()
+| Provides the min value of an array of numbers
+| Integer
+
+| max()
+| Provides the max value of an array of numbers
+| Integer
+
+| avg()
+| Provides the average value of an array of numbers
+| Integer
+
+| stddev()
+| Provides the standard deviation value of an array of numbers
+| Integer
+
+| length()
+| Provides the length of an array
+| Integer
+|===
+
+
+==== Filter Operators
+
+Filters are logical expressions used to filter arrays. A typical filter would be `[?(@.age > 18)]` where `@` represents the current item being processed. More complex filters can be created with logical operators `&&` and `||`. String literals must be enclosed by single or double quotes (`[?(@.color == 'blue')]` or `[?(@.color == "blue")]`).
+
+.Filter Operators
+
+|===
+|Operator | Description
+
+| ==
+| left is equal to right (note that 1 is not equal to '1')
+
+| !=
+| left is not equal to right
+
+| <
+| left is less than right
+
+| <=
+| left is less or equal to right
+
+| >
+| left is greater than right
+
+| >=
+| left is greater than or equal to right
+
+| =~
+| left matches regular expression  [?(@.name =~ /foo.*?/i)]
+
+| in
+| left exists in right [?(@.size in ['S', 'M'])]
+
+| nin
+| left does not exists in right
+
+| subsetof
+| left is a subset of right [?(@.sizes subsetof ['S', 'M', 'L'])]
+
+| size
+| size of left (array or string) should match right
+
+| empty
+| left (array or string) should be empty
+|===
+
+[NOTE]
+====
+
+
+The way this works is that the filtering happens right at the edge of TurtleQueue's infrastructure, right before sending to the client.
+
+This is therefore *not* recommended as a general way to architecture the communication in your app - #channels should be used for that.
+
+A typical use case would be to replay part a channel's history. Instead of doing filtering on the client, using JSON PATH filtering will allow the client to save bandwidth and processing power.
+====

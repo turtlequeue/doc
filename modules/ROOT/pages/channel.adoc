@@ -1,0 +1,41 @@
+= Channels
+
+The primary means of splitting communications are via #channels.
+
+== #channel
+
+Although not strictly necessary, we recommend prefixing your channels with "#", as they are used in the same way a hashtag is. Think of channels as hashtags, or chat rooms.
+
+== Regex-based channel
+
+(upcoming)
+
+TurtleQueue also supports a regex-based subscription model. For instance, let's say you are building a chat app for your sales team, with the following chat rooms:
+
+- `#sales-team-us`
+- `#sales-team-fr`
+- `#sales-team-en`
+- `#sales-team-ru`
+- `#sales-team-ch`
+
+Now let's say you want to to subscribe (or publish) to all of these at once.
+Use the `#sales-team-*` regex pattern like so:
+
+[source,js]
+----
+turtlequeue.publish({chanelRegex: "#sales-team-*", payload: "Attention all sales people!"})
+----
+
+NOTE: The exact flavor of regex used if the Java regex pattern.
+See the Java documentation for java.util.regex.Pattern for details https://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html
+
+If you would like this feature to be prioritized please  xref:get_help.adoc[Get in touch]! Every vote counts!
+
+== @publisher-id
+(upcoming)
+
+Every instance of the TurtleQueue SDK connected is given a unique ID. It is possible to reach a unique SDK instance directly
+
+If you would like this feature to be prioritized please  xref:get_help.adoc[Get in touch]! Every vote counts!
+
+NOTE: Think about using #channels if possible before using @publisher-id as it often turns out to be easier to use.

@@ -1,0 +1,56 @@
+= Comparison with other messaging technologies
+
+. Summary
+|===
+| Name | PubSub | Message Queue | Regex filtering | Geo filtering | Durable | Available in the browser | Hosted | On Premises
+
+|RabbitMQ
+| icon:times[role="red"]
+| icon:check[role="green"]
+| icon:star-half[role="orange"] (wildcard-only)
+| icon:check[role="green"]
+| icon:times[role="red"]
+| icon:times[role="red"]
+| icon:times[role="red"]
+| icon:times[role="green"]
+
+| Apache Kafka
+| icon:times[role="green"]
+| icon:check[role="green"]
+| icon:check[role="green"]
+| icon:times[role="red"]
+| icon:check[role="green"]
+| icon:check[role="red"]
+| icon:times[role="red"]
+| icon:times[role="green"]
+
+| Google Pubsub
+| icon:times[role="green"]
+| icon:check[role="green"]
+| icon:check[role="red"]
+| icon:times[role="red"]
+| icon:check[role="green"]
+| icon:times[role="red"]
+| icon:times[role="green"]
+| icon:times[role="red"]
+
+| Amazon SNS
+| icon:times[role="green"]
+| icon:check[role="red"]
+| icon:star-half[role="orange"] (prefix matching)
+| icon:check[role="red"]
+| icon:check[role="red"]
+| icon:times[role="red"]
+| icon:times[role="green"]
+| icon:times[role="red"]
+
+|TurtleQueue
+| icon:check[role="green"]
+| icon:check[role="green"]
+| icon:check[role="red"] (coming soon)
+| icon:check[role="green"]
+| icon:check[role="green"]
+| icon:check[role="green"]
+| icon:check[role="green"]
+| icon:check[role="green"]
+|===

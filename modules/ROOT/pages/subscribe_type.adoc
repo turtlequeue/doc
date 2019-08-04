@@ -1,0 +1,17 @@
+== SubscriptionType
+
+TurtleQueue also provides a way to handle different types of subscriptions, that allow it to act both like a message queue and a publish-subscribe broker.
+
+== Shared
+
+The default mode. It makes it really easy to build chat rooms.
+
+== Failover
+
+Let's say that you have several worker nodes:
+
+For instance, you want to synchronize a database, and you have a worker:
+
+== Exclusive
+
+== Round-robin

@@ -1,0 +1,90 @@
+= #channel publishing
+
+To follow this guide, you should have followed the JS installation guide xref:js_sdk.adoc[image:js_logo.png[JS SDK,50,50]], and end up with the following snippet:
+
+[source,js]
+----
+const tq = require('turtlequeue');
+const websocket = require('websocket');
+const USER_TOKEN = process.env.TURTLEQUEUE_USER_TOKEN
+const API_KEY = process.env.TURTLEQUEUE_API_KEY
+
+if (!USER_TOKEN) {
+  console.log('Missing USER_TOKEN')
+}
+
+if (!API_KEY) {
+  console.log('Missing API_KEY')
+}
+
+const q = tq()
+
+q.on('ready', () => {
+   console.log('TurtleQueue ready')
+
+   setTimeout(publish, 2000)
+    subscribe()
+})
+
+q.on('error', evt => {
+  console.log('error')
+})
+
+q.on('disconnect', evt => {
+  console.log('Disconnected')
+})
+----
+
+We won't go into the details of the above basic setup again. Now for the interesting part, here is what we are going achieve:
+
+++++
+<iframe frameborder="0" style="width:100%;height:293px;" src="https://www.draw.io/?lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1#R5Vjbjts2EP0aP9rQxZLlR8vKJgFaYAE3bfJISZTEhhJdkvJlv75DibrLjRfrLVLUC6w5w%2Fs5M2ckL%2Bx9fvnI0TH7lcWYLiwjvizsYGFZW8eA%2F8pxrR1r21y5Tu1LOYlrr9k5DuQFa6eempYkxmIwUDJGJTkOnRErChzJgQ9xzs7DYQmjw12PKMUTxyFCVHuNlel0HX%2BQWGZ1h2dtOv8nTNKs2dx0t3VPjprB%2BjIiQzE791z2h4W954zJupVf9pgqBBto6nlPN3rbE3NcyHsm2CR63tEvn8ql9H%2F%2F%2FHl%2FevozX%2BrDnhAt9Z0%2FYhb4C8ulsKgfcmilqqXvIK8NNrA40ACGf86IxIcjilTPGWIBfJnMKVgmNJE41twk5ILhLH5CKN0zyni1kB072IvX4BeSs%2B%2B41%2BNZoe267eb9q%2BrbnzCX%2BNJz6avDJXIs%2BRWG6N616dZTdDS2MXbusapdWY%2FQxod0KKXtyh3U0NBovwL5Zv8e9F8EBryN3R3oc1YWsUKzgvgHDIwBR9hLojnA3cjDYfIgwI0h3tYUb9OaAdx9N8DNCeDToC7indINsApW4AojxGXjiygSgkRDdAEifv0KhtEY35SxchozuPQ7g2trxU9EXaGybiIO%2B6dY%2FjiFcTzQsikvPeCdGdwbH8cUSXIa6uIcGXqHZ0bgxC3t1mbEuzPiU7CSR1jP6svVaCHb8EYB5AwXqoGZLFTFRnvtN4SLNRMuLspVbhWhUF%2BHMhQRJyGu6tJCRbNdYCg6o3F35DMklRyGFceCvKCwGqAC5KguWl3d8RdOoISVkrRQUQkhA8Jh%2Byo5CVSvne7ISRyr%2BT5FIaY%2Bir6nlW70Mj6pPrPx989JNNaBtgjrIw%2BK3Jw%2BLI2V4W69hwRdw1UzgyWJwO8TFfYt1b6H5beoNtBkRbOqHbuh6zyoTLrW%2BmeTbe8nk%2B0LkV%2BbNaDdmwVWN0kZr5T6Whr%2FM1K%2F9iZSv7Ido%2FuMsvJe5Xet16373oVg%2Bow8FvjnMqREZP%2BjMtAk5UPKgGk4A8KX5tvis1nmX6sK1rQqTKhtX%2F8UizESWVUHjCHbQ23XWlbR9swEkYTNEv3LaEDIpGT5TCRIdpwLGDjaUZ0yv6TqTX6FXkqOVzkWono%2FHleiTaD%2BHlNvTPeO1wRzRsM2D6g35Xqbn4OIbwMaHoLw5YTSNvb6VG5U6v5Vqhd1PxdpZyzsXWdksLjKfjhJHPbGAFQzif8%2BUlBKiILqVxSzRzTFibwZDQIeQEiR%2FqaMYLlujzKT2hOmb9PqjB7ene3Kc6bM2jPM2q9nFszud5Q6qbufpOwPfwM%3D"></iframe>
+++++
+
+Let's start with setting up the subscriber, which is a simple function:
+
+[source,js]
+----
+const subscribe = function subscribe() {
+  return g.subscribe(
+    {
+      channel: '#news'          // <1>
+    },
+    (err, data) => { // <2>
+      console.log('data received in #news', data)
+    }
+  )
+}
+----
+<1> the channel we want to subscribe to
+<2> the callback that will be called every time a new message is published in #news. Tthe "data" argument will contain the message above `{msg: 'hello turtlequeue'}`
+
+Our subsscriber is now ready. We can now create a publisher:
+
+[source,js]
+----
+function publish() => {
+  console.log('Publishing!')
+
+  g.publish(
+    {
+      payload: {                        // <1>
+        msg: 'hello turtlequeue'
+    },
+      channel: '#news'                  // <2>
+    },
+    (err, data) => {                    // <3>
+      console.log('published', err, data)
+    }
+  )
+}
+----
+<1> You can put anything you want in the payload, and it will be received
+<2> This is the important thing in this tutorial: the #news channel you want to publish to. You can think of this as a chat room, or a twitter #hashtag.
+<3> once published, our callback will be called. It is also possible to use the promise returned by `g.publish`.
+
+When running this, you can see it work and the messages being received. That's because the channel is the same in both cases: "#news".
+
+You are now ready to use TurtleQueue and build apps that communicate very easily!
+
+You can also learn about what makes TurtleQueue so special, with the next chapter: geolocalized PubSub

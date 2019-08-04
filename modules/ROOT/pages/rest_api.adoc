@@ -1,0 +1,41 @@
+= REST API
+
+image:undraw_programming_2svr.png[REST programming,250,250,align="center",title-align=center]
+
+The Swagger documentation is available at: https://turtlequeue.com/api/swagger/swagger/index.html?url=/api/swagger/swagger.json
+This is generated automatically from the swagger 2.0 specification at https://turtlequeue.com/api/swagger/swagger.json
+
+== Authenticate
+
+In order to use the swagger API interface you need to authenticate.
+Find your UserToken and ApiKey in https://turtlequeue.com/dashboard/security
+
+Then authenticate, in the swagger UI.
+
+First, click on the authenticate button of the method you want to use. For instance, "POST publish".
+See screenshots below:
+
+image::swagger_authenticate_need_login.png[]
+
+This will give you a popup, which allows you to put you ApiKey and UserToken:
+
+image::swagger_authenticate_popup.png[alt=Auth popup screenshot,width=50%]
+
+Once done, you should be able to use the swagger UI to make requests and generate sample cUrl commands.
+
+image::swagger_authenticate_publish_ok.png[]
+
+
+== Publish
+
+For the `POST Publish` method, a minimal set of data would be:
+
+[source,js]
+----
+{"channel": "test", "payload": "some data"}
+----
+
+[source,bash]
+----
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' --header 'ApiKey: YOUR_API_KEY' --header 'UserToken: YOUR_USER_TOKEN' -d '{"channel": "test", "payload": "some data"}' 'http://turtlequeue.com/api/publish'
+----

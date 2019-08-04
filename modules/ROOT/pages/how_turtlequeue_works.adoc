@@ -1,0 +1,39 @@
+= How TurtleQueue works
+
+image:undraw_product_teardown_elol.png[Nice developer,250,250,align="center",title-align=center]
+
+== Behind the scenes
+
+TurtleQueue network infrastructure is comprised of several parts, all playing an essential part for our customers:
+
+- security policies (login, tokens, limits) are enforced at the edge of the platform
+
+- a user management platform, to securely store your preferences and credentials
+
+- a robust routing engine ensures messages are sent to the right destination
+
+- a durable messaging layer: once the routing engine has decided to send messages, the messaging layer ensures it will be delivered, handles retries and durability
+
+- client SDKs in several languages, communicating with the above layers
+
+- finally, your whole infrastructure is built on Kubernetes, using a multi-cloud cluster for maximum resilience
+
+== Tech
+
+Some of the tech we use and love:
+
+- Node.js
+- Clojure
+- Kubernetes
+- CircleCI
+
+I am in no way affiliated with any of the above products, however nothing would have been possible without these. Kudos!
+
+== No evil corp
+
+image:undraw_work_time_lhoj.png[Nice developer,250,250,align="center",title-align=center]
+
+No description of a product would be complete without talking about the people behind it.
+
+Well, It's just me.
+I'm a solo developer who actually wants to create an amazing product. I'm very thankful to my users, and especially the paying users who make creating this product possible. Feel free to xref:get_help.adoc[reach out], and thank you!

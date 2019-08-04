@@ -1,0 +1,44 @@
+== Getting started
+
+=== Publish-subscribe
+
+Publish-subscribe is a simple communication pattern where a subscriber receives messages from a publisher (and conversely a publisher sends messages to subscribers). For instance:
+
+User (A) subscribes to the channel #news
+
+++++
+<iframe frameborder="0" style="width:100%;height:123px;" src="https://www.draw.io/?lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1#RtVbJcqMwEP0ajklhMAQfjZ3tMFWpcmUmcxSoAU0Ecgk5tvP10wJhkCHbLD7Y6id1S%2F36qWXHX5WHW0m2xTdBgTueSw%2BOv3Y8bxG4%2BK2BYwuE7lUL5JLRFpr1wIa9ggGNX75jFGproRKCK7a1wVRUFaTKwoiUYm8vywS3d92SHEbAJiXcoO7lLOgnfjCqinYi8q56%2FA5YXnSbz8JFO1OSbrFJpi4IFfsB5F87%2FkoKodpReVgB1%2FR11LR%2BN2%2FMnk4soVKfcfBZ%2BrDkj3e7CxV%2Fv79fvdz8Ki9MlBfCdybnWxDr2PFCjkHjROIo1yOTgzp23GBwLAMa8b5gCjZbkuqZPQoBsUKVHK0ZDkm9bWuTsQPgWeKMcb4SXMgmkE8DiOgc8VpJ8QyDmchL%2FDA8bT5MtTs3SAWHAWRSxyRKUPKIS8ysH5lKGinOTVX2g6IaqBjUs8OIUVJ%2BCtwzjQND9heI90bEP9aAbLvLT3Avxa6imsuG4A%2F4P6ebQJSlU3SHaQRJ9m%2Fo9my2gzHbM2%2BC7vB%2F0e2P6B4LuqJL3TPQqkQFDUNEqg5LOalrltrcwoGpp8H4J47dy8BYa02G2xnHzqgwoaehMfDSZu%2FWWL0fvWE668Z6s0a12MkUPlYe5paD%2Brg1ALV65Ljig5oGEyXtMAmcKPZi99upOpsdHgTDzHpBzX1LUTM3sEO0eRuvYRs8D7SwAwVncVpeRnEa1Z2y%2FnMhzieEGJJS39kqqfXPZpfUqWQJNK%2Bdo6%2BJXwE%2BZWfrPtEn8LIqW7ASavZKkmaBltFW59lkHsROsNbtmrO80npHYWFD8mN96Rm%2BiUszUTJKtX%2FMSQI8Julz3vSjQSfJms%2BkSt%2B9neft5fSymxNbL%2BdU27lwL91wEf2d4owwuovSeYgsq%2BGLmkCzf%2BDb5f0fJf%2F6Nw%3D%3D"></iframe>
+++++
+
+From this point on, when a message is posted to the "#news" channel, (A) will get notified. For instance, if a publisher comes along and sends a message to the #news channel like so:
+
+++++
+<iframe frameborder="0" style="width:100%;height:293px;" src="https://www.draw.io/?lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1&title=Untitled%20Diagram.xml#R7VjbbqMwEP2aPCbiEgh5LElv0q4UKepu99HABLw1GBmTS79%2BbTDhmibbNto%2BbCq1nvEFz5kzc0hH5iLe3zOURt9pAGRkaMF%2BZC5HhjG3NPFbOg6lY2rrE9sqfSHDQenVa8cav4Jyqq1hjgPIWgs5pYTjtO30aZKAz1s%2BxBjdtZdtKGk%2FNUUh9BxrHxHl1Sa6VU%2F8xAGPygnHmNX%2BB8BhVD1ct%2BflTIyqxSqYLEIB3TVc5u3IXDBKeTmK9wsgEsEKmnLf3YnZ440ZJPySDSb2Vzfk6SEfc%2FfH4%2BNie%2Fc7HqvLbhHJVcz3QJfuyLCJONT1mBiFcqRi4IcKG3G4SIMw3F2EOaxT5MuZneCC8EU8JsLSxRBlaZmbDd6DuIu7wYQsKKGsOMgMLHCCqfBnnNEXaMw4hmfa9vHhW2Ac9iej14%2BYCkYCjYGzg1iiNkw1lQbFxiPHdo2sKlfUSGjlQ4pK4fHkGmoxUGj%2FBfLV8xvQP2Ug8NZuLkCf0TwJJJoFxGcy0AUcgbPxhwC3fQe8zWcB3sbb6OOtGwOA21cDXO8B3id1EtzIviGshCZQYIQYr3w%2BQVmG%2FTa6sMf8uTH%2BJcbaxFLWUsKhVcahMhIR0XPTaOySZr2tsOp9wR2WYRdWeX0Iek2skyMRIs2ZDxewUUQbAj%2FXMPpJb2TVGkhq5WNAEMfb9n2HMq2esKJYRHLklGE5bVLNrPYRZZxqV7MXdg4ytc5BRuegEofeQQXxjmF%2FgIvGABdtFMvCTbxM%2FlnnXuYz7EEheiNZKmYCQtE66y5oFqKIeZuzDDL8irxigWRSKgMtQrfckbWUXZvgMJGUF1QSXcl0ZTPAQhpv1ESMg0DudwnygLjIfwmLptRoJ5vi81Y7UcKtblJrZZPCbxTzyeYz1iaaPXc%2BRjrFjbHR3kE3mwyuwwrzlCRckuWPSIJIk%2BEPSkJge7b1SRpsz76cJszOa8LxvU0WSoCyqMBYa%2BPZxk1pR1EZK5phjulgLX3rLPAo5zQeKDZO06GaFFdL5S3jfShfwSfoNWcwiSHLihfbbpZnS%2FnzSbk0Ork09YnVy%2BaQFpizayXTuZLAv1es3%2FVicCWBn1%2Bo72VF%2FCuBnzodVlnaxLS0%2BtPpxZfqfa%2FznDn32vLf%2F9rVlfVV7hGcRf%2FF%2F2Shvyn%2Buma1Ej7Wv8y7gDDrL%2F3l8vr%2FJ%2BbtHw%3D%3D"></iframe>
+++++
+
+Then (A) will be notified that is received a message on #news along with a copy of the message:
+
+++++
+<iframe frameborder="0" style="width:100%;height:293px;" src="https://www.draw.io/?lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1&title=Untitled%20Diagram.xml#R7VjZbqMwFP0aHhOxBEofS9JNmpEiRZ3l0YABTw1GtklIv35sMDtpU6WVOtIkUuJ7vZ977rkhmrVOy3sK8uQ7CSHWTD0sNWujmea1rYtP6TjWjpVjLB279sUUhbXX6Bw79AKVU02NCxRCNhjICcEc5UNnQLIMBnzgA5SSw3BYRPBw1xzEcOLYBQArr7407K7jJwp5Une45lXnf4AoTprNDee67klBM1hdhiUgJIeey7rVrDUlhNettFxDLBFsoKnn3Z3obU9MYcbPmWChYHuDnx6KBfd%2BPD6u93d%2F0oU67B7gQt35HpKNp5kOFot6PhWtWLbUHfixwUYsLsIgDO%2BQIA53OQhkz0FwQfgSnmJhGaIJWF7HJkIlFGfxIoTxmmBCq4Ws0IZuuBJ%2Bxil5hr0e1%2FQtx2k330PKYXny9kaLqWAkJCnk9CiGqAkrXYVBsbHl2KEXVeVKegFtfEBRKW5X7qAWDYX2O5Bv9u9B%2F8SgwFu%2FOQN9SooslGhWEL8RgTHgALpRMAe4E7jQjz4K8CHe5hRvw5wB3Pk0wI0J4FNSZ%2BGN1A1hZSSDFUaA8sYXYMAYCoboCjzo8Zcw9Mb4LY2l3Zibst%2B5ObZWeIfkFSqrPgoMJ4I0wlsoIKAx5G%2Fl9DQuPeDtGdwbH4UYcLQfHmMuGGqHLUHigG3Y27xq4m6P4slIQQOoZvXlarSQpbsjAtnDhWocJgtV3GivfQFdzBm6OCCVuZX5TH7tCp8FFPmwqkuaZLOVQVF0RuPOyGeRZ3xIKwoZegF%2BNUASJJcXra5ue5q9kcKKUZxJVgqGCOGwPJmvSFSvG9WRojCU8z0MfIg9EDzHlW70Mj6qXq9lvKqt6iRdOesz85V8O6kPC32pO9fuZaRT3FiYwxkkihj8HFZYp1T7nChfotoiTGYwq9qh4zv2B5VJx1x9Ndl2v5hsl4j%2FatYQ7d4sYXWTpHGp1Nda%2BVWlfuVOpH5p2Xr3GmXlucrvmO9b97MLwfQ38ljgt4WPEUv%2Bl4GT%2BftqGTB0exDwhfGPVQVzWhUmoW0f%2F2QUQ8CSqg7ow2gPtV1pWRW2LWGIIzIb6G%2BjAT7hnKQzTOAknyOMOFouT5mWsXySX4KXgsJlChmrno%2FHlehqI98fU28MZ5Tr1rTezEnY6v3lRpjdw3Yd%2Be5%2FC%2Bv2Lw%3D%3D"></iframe>
+++++
+
+Note that B doesn't even have to know *who* is listening to #news. It only has to send a message *where* it wants the message to be seen. This sort of decoupling between "where" the information is published (the #news channel) and "how" the information is published (by reaching out to (A)) is very useful in practice.
+
+[quote, Brendan Burns "Designing distributed systems" (O'Reilly), "Publisher/Subscriber infrastructure" chapter:]
+____
+"`Instead, a popular approach to building a workflow like this is to use a publisher/subscriber (pub/sub) API or service. A pub/sub API allows a user to define a collection of queues (sometimes called topics). One or more *publishers* publishes messages to these queues. Likewise, one or more *subscribers* is listening to these queues for new messages. When a message is published, it is reliably stored by the queue and subsequently delivered to subscribers in a reliable manner.`"
+____
+
+Of course, if several users subscribe did subscribe to the #news channel, they would all have gotten a copy of the message, like so (subsequent steps on the same diagram):
+
+++++
+<iframe frameborder="0" style="width:100%;height:1403px;" src="https://www.draw.io/?lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1&title=Untitled%20Diagram.xml#R7V3bcps4GH4aX8aDEBLiMnaatjO7M5nJdLd7iUG2abHxAE6cPP1KnMxB2LicbEw7kyAJBPpP338QZALnm8NXV9%2Bt%2F3ZMak9kyTxM4NNEljUksZ%2B84yPsUDCYYhT2rVzLDHvBsePV%2BqRRZ3Tpam%2BZ1Muc6DuO7Vu7bKfhbLfU8DN9uus679nTlo6dvetOX9FCx6uh21GvNAXoOPCvZfrrcIDI6rH%2FG7VW6%2FjmAGvhyEaPT44W461103lPdcEvEzh3HccPjzaHObU5BWPShNc9l4wmT%2BzSrV%2FlAmgZL4%2F2j2%2F7B3%2F2z%2Ffv87fnX5uH6GHfdHsfrfkrdZ5mExnbbNLZwmVHK34UrcH%2FiGnDJmdsYI3Z%2B9ry6etON%2FjIO5MF1rf2NzZrAXaoe7uQN0vrQNmzzJaWbc8d23GDiaCJKDEV1u%2F5rvObpkaIvIAYJzd%2Fo65PD6WrBwlNmURSZ0N994OdEl2gSBEbImlMZOw9xdWoa51iaNynR6K0SmY%2BkpodRNS%2BgPLx%2FVOk%2F%2BFRRm%2FpsQL1XWe%2FNTk1AxKf4UCe4DolS0NEcGwQulg2RfAsveUivYEsIDhujeCgQPCiUG%2FNR243WGvrbGlAI9314z7D1j3PMrLUZfRwP36yhhQ3%2FuONKYqbT4f04NNH0jKfLb6EsHWw%2FJ%2FxjOw4NQdrHafgjXiG8PGpWTBiOR6xJTp716AVpJGtdkX9cwajyPQUV5GAqXGfS23dt96yzyvidHSHF8diK0lkKlHaWKhQTljCdUZXpW1hbiIokZx0ouxEIR0KEwWClyy7hizKAlnE%2BoYr7nbh8V%2Bv%2B4VnuNaCBqA34aoCt5QhWu68CsaCKbGflVmXetanvghO4JK04wsNlo5mE%2FTErbZtrbZc5JkoMasEZ9wYWAwaH6OBjWWa%2FPqZrS%2BoPdON36vAKKXMyTL4d8qcRMAdPckRK9MifEKZS43PgzSVsEbqCV0kGw9y9gpnufRoK1KhFCHhTtAY4p7RWCmCw5DRGKp9o7EisoAjGmel8SwaK5KY6%2F3AcaLVdeEYqt3CsQJHOK4Fx6E2Dw2OlTJMEHJ5eCihoN5RArWNElNJTqAhtPIYKa1jRTDfC3UtRiauzo0DiHITAAJUkBU4VZuSnOmviiEKOD9X2zCCRxipByNoiDCiFqTiTqI6JMCPbqM6Uobgg4zqkCCK7hivi%2FWEhvH6lqM6UhWU1T5BOR%2FVIa2hqA7hbuE4pscIx38KxyXJ%2FpuGY1Sa6buTqA4rfaMEkttGiWFGdahyWrBXAMlHdRg3F9WJ5mobRsbkYD0YCdV9aDBSjPUjGJnfB4yovW%2FoQMXAelTMEsU8zVrGzCmGqgoJJgoGAKI8q6dA01QZQ1mSmA2%2BYrUsRvwNuxZptyIZuYLw89qdApwzH0idwj91CiQ56xQQrTBXy04BLiY67iSpR%2FreqqEWw%2FohJ%2FVI71s11GLE3KJNvbGkXsyds%2BYXX9XOSa2prRqk460aqih3MDp91aMxdYg7J9VijH5fST2t960aanG3TMMoMcykXiy6Vw4g%2BaSe1uBWDdFcbcOIaGPRCCMXwIgyRBi596QekGDvODJm9SprZq2sHud1Jq2Hyjnau2KOab0rdQtw3oDg5vJ6mtZ5Xk8t5vVOBRIN2ntmDmRDaO9NvMCooWweJlkS959dIsV0XouqXSG71FSMkLUSDWo8iSKGs6FFv6aBb8BWsSZDKfqZETxEtGlqLM6nX2oygJq1PzjebduRvSCi3GjWC3nZL2zLW9%2B7r3JC%2BU9GEUDKui0PoJ50du67ENH%2BkRxrk2%2BDcC6aurcOQETKcjsLDJEhDNj24niWbzlCRv%2BVO2Hh%2BL6zEUiC7%2BxEAsMebcefcnNY8c%2B8TPXPvUunG%2Bp5wcdT8jCmPvH%2FDYEVzIFVDF5nDBhUy6WhHlYVc1xDrfrl6gUACByFTst%2BpJixGVTZD%2BUJTnr3zESvM%2FXpmV1T3U%2FTqnprJYmyjup%2Bck6skkLgxYU%2FkC38MQHtNjQjY2KoprOFzzpbt5eyJaWveA218pcHCrn3t75I6299XVHpj5%2FRYjkQSFVf3e4XWEAc%2BSZiSGoUBOUKk7UML5ooDzXCywXwMsS3xbTSt8WGWhHMwwvs%2FXUxTR41s6pmnqkIktMVQcbrW6kIahWyardUEaznVlR0Fir5HyXf4Ohqm1He%2FKg16onxZzaTyaTOC4raZR%2BRahAuOioo5neQAMJFvWfEaP2zURdmrvquKZ5V%2B36DCYWcKhUSrZFSIVZy1kAGUufW4PwXosZy4Tm9Hna5UKuQTBnLhSL2F3wHEEcOfdULk2TOyMzazJRVIPArOmZnBb9iZGcldkLUIjtZ8%2Fh3VULDfPwTNfDL%2Fw%3D%3D"></iframe>
+++++
+
+NOTE: If users who subscribed to the #news channel were disconnected when messages were sent, they will be able to receive their messages after reconnecting.
+
+Find out how to subscribe and publish to #channels as described above, and then how to publish by geolocation by following the walk-through for you language's SDK:
+
+xref:js_sdk.adoc[image:js_logo.png[JS SDK,150,150]]
+xref:clj_sdk.adoc[image:clj_logo.png[Clojure SDK,150,150]]
+xref:rest_api.adoc[image:http_logo.png[REST API,150,150]]

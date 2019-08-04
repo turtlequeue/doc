@@ -1,0 +1,21 @@
+= Events
+
+image:undraw_lost_bqr2.png[Map Lost,250,250,align="center",title-align=center]
+
+All the events exposed by the public interface are described here.
+.Events
+|===
+|name |description |example data
+
+|ready
+|Event thrown when the communication has been established with the server and the authentication is correct.
+|
+
+|connect
+|A low-level event: you probably want to use the 'ready' event instead. Thrown when the connection to the server is established (websockets, polling etc.). This does not necessarily mean that the authentication was successful. The handler function takes an array of previous/next states for maximum flexibility.
+|
+
+|error
+|when an error is thrown, this is useful for logging, debugging
+|
+|===

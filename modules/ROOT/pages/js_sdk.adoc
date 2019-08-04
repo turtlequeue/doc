@@ -1,0 +1,181 @@
+= Hello TurtleQueue in JS
+
+image:undraw_developer_activity_bv83.png[JS developer,250,250,align="center",title-align=center]
+
+This tutorial explains how to get started with TurtleQueue in Node.js and/or in the browser.
+
+In a hurry? Just clone the demo project which contains the final result:
+[source,bash]
+----
+git clone https://github.com/turtlequeue/quickstart-js
+----
+
+Otherwise follow this guide, which will guide you through sending messages in #channels as well as geolocalized.
+
+== A bit of boilerplate
+
+First, import the library:
+
+[source,js]
+----
+const turtlequeue = require('turtlequeue');
+const websocket = require('websocket') // <1>
+----
+<1> The library import for the websocket package is only required on nodeJS
+
+
+We then read the environment variables from the environment (adapt to your build process in the browser). These credentials can be found on your dashboard: https://turtlequeue.com/security.html
+
+[source,js]
+----
+
+const USER_TOKEN = process.env.TURTLEQUEUE_USER_TOKEN // <1>
+const API_KEY = process.env.TURTLEQUEUE_API_KEY       // <2>
+
+if (!USER_TOKEN) {
+  console.log('Missing USER_TOKEN')              // <3>
+}
+
+if (!API_KEY) {
+  console.log('Missing API_KEY')                 // <4>
+}
+----
+<1> a `UserToken` uniquely identifies an account
+<2> an `apiKey` contains the necessary permissions for publishing and subscribing.
+<3> if you see this message you need to "export USER_TOKEN=XXX" where "XXX" is the secret value from https://turtlequeue.com/security.html
+<4> if you see this message you need to "export API_KEY=XXX" where "XXX" is the secret value from https://turtlequeue.com/security.html
+
+
+Time to instantiate a new turtlequeue instance.
+
+[source,js]
+----
+const q = turtlequeue({
+  host: 'turtlequeue.com',   // <1>
+  type: 'ws',                // <2>
+  protocol: 'https',         // <3>
+})
+----
+<1> This is only useful for when turtlequeue is deployed in hosted environments
+<2> Only 'ws' (websockets, the default) is supported for now
+<3> always prefer 'https' - this is useful in hosted environments
+
+We now have `q` holding an instance that will be able to connect.
+No HTTP or WebSocket connection has been opened up yet, we need to explicitly trigger it.
+
+
+So, let's set up listeners to the various connection events. While not strictly necessary, it is a good practice and can help speed up debugging down the line.
+
+[source,js]
+----
+q.on('ready', () => {             // <1>
+   console.log('TurtleQueue ready')
+
+   setTimeout(publish, 2000)      // <2>
+    subscribe()                    // <3>
+})
+
+turtlequeue.on('error', evt => {
+  console.log('error')
+})
+
+turtlequeue.on('disconnect', evt => {
+  console.log('Disconnected')
+})
+----
+<1> the 'ready' event is fired when turtlequeue.com is reachable and the authentication is correct
+<2> continuously publish every 2 seconds
+<3> subscribe, need to do it only once. The callback will be fired every 2.5 seconds
+
+Finally, we now connect!
+
+[source,js]
+----
+q.connect({ // <1>
+  userToken: USER_TOKEN,
+  apiKey: API_KEY,
+})
+console.log('Connecting...')
+
+
+setTimeout(() => { // <2>
+  console.log('Disconnecting!')
+  turtlequeue.disconnect()
+}, 15000)
+
+----
+<1> we connect to the server, using our credentials. If the credentials are correct, the 'ready' event will be fired. Otherwise, the 'error' event will be fired.
+<2> after 15 seconds running, we trigger a disconnect. Once done, the `disconnect`event will be triggered
+
+We are now connected and ready to go! The connection count on the dashboard should also increasem as a confirmation that you are connected!
+
+//
+// TODO send messages from the dashboard
+//
+// TODO SHOW A LIVE COUNT OF THE CONNECTIONS ON THE DASHBOARD
+// First, let's define two helper functions.
+// Publish is the first, it will use `g` to publish a few
+
+// [source,js]
+// ----
+// const publish = function publish() {
+//   console.log('Publishing!')
+
+//   g.publish(
+//     {
+//       payload: {
+//         msg: 'hello turtlequeue'                           // <1>
+//       },
+//       channel: '#tutorial',                          // <2>
+//       location: {                                    // <3>
+//         lon: 2.1204,
+//         lat: 48.8049
+//       },
+//     },
+//     (err, data) => {                    // <4>
+//       console.log('published', err, data)
+//     },
+//   )
+// }
+// ----
+// <1> the "payload" is a JSON containing arbitrary data. It will be delivered as-is to the consumers
+// <2> the #channel you want to publish to. You can think of this as a chat room, or a twitter #hashtag. There are more elaborate ways of communicating, refer to the chapter on link:channel.adoc[channels (@sub, #channel and regex matching)]
+// <3> (optional) the location around which you want to publish. In this case the coordinates are Versailles, a French city near Paris
+// <4> we generally follow this pattern in callbacks. A third argument `metadata` is also passed which contains
+
+
+// We now have a function to send data, we need the corresponding function to receive it on the other end!
+
+// [source,js]
+// ----
+
+// const subscribe = function subscribe() {
+//   return g.subscribe(
+//     {
+//       channel: '#tutorial', // <1>
+//       location: {               // <2>
+//         radius: '50km',
+//         lon: 2.3522,
+//         lat: 48.8566
+//       },
+//     },
+//     (err, data, metadata) => { // <3>
+//       console.log('data received in Paris#test', err, data, metadata)
+//     },
+//   )
+// }
+
+// ----
+// <1> the same channel as above. If they don't match, we will not receive messages
+// <2> The location. This time, the coordinates correspond to Paris, which is less than 50km from Versailles
+// <3> the "data" argument will contain the message above `{msg: 'hello turtlequeue'}`
+
+
+
+// === Conventions
+
+// This is a convention that most callbacks follow: `(error, data, extra)`.
+// Most of the time checking for `(error, data)` is enough, but If you find yourself thinking "I wish turtlequeue exposed more data", it is worth looking at the third `extra` argument.
+// If this argument does not contain what you are looking for, feel free to open an issue!
+
+// All this is already available in a sample repository - feel free to clone it - it has tests, a permissive licence, it runs on NodeJs and on the browser with web pack! https://github.com/turtlequeue/quickstart-js[js-sample]

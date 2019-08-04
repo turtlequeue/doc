@@ -1,0 +1,5 @@
+= Welcome to TurtleQueue's Documentation!
+
+This site covers TurtleQueue’s usage as a messaging platform for real-time applications. Many core ideas & usage of the SDK are explained here, and then expanded upon in specific sections.
+
+Start by following the xref:getting_started.adoc[Getting Started]

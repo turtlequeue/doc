@@ -1,0 +1,41 @@
+= Geo filtering
+
+image:undraw_world_9iqb.png[World,250,250,align="center",title-align=center]
+
+One of the most unique features of TurtleQueue is the ability to publish and subscribe based on geolocation.
+
+This makes it easy to build real-time apps that need to rely on users or items locations.
+
+[source,js]
+----
+        location: {       // <1>
+          radius: '50km', // <2>
+          lon: 2.3522,    // <3>
+          lat: 48.8566,   // <4>
+          annotation: 'Paris', // <5>
+        }
+----
+<1> The `location` filter can be applied along with other filters such as #channel, jsonPath
+<2> the `radius` accepts a natural way of expressing it. m, km, cm, mm, yard, foot, feet, inch, mile, furlong  are all valid radiuses units. Without unit, meters are assumed.
+<3> longitude
+<4> latitude
+<5> annotation: we recommend either using variable names or annotating your data
+
+
+== Coordinate system
+
+Coordinates of points on the sphere's surface are addressed by a pair of floating point numbers that denote longitude and latitude. The range of longitude is −180 through 180, which wraps around the whole of the sphere: −180 and 180 denote the same line. The range of latitude is −90 (the south pole) through 90 (the north pole).
+
+For a more detailed explanation of this, consult the Wikipedia article on the https://en.wikipedia.org/wiki/Geographic_coordinate_system[geographic coordinate system].
+
+
+== Projections used
+
+TurtleQueue supports the WGS84 World Geodetic System’s reference ellipsoid and geographic coordinate system (GCS).
+
+
+Planned features:
+
+- GeoJSON
+
+If you would like this feature to be prioritized please  xref:get_help.adoc[Get in touch]! Every vote counts!
