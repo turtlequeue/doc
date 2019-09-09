@@ -1,6 +1,6 @@
 = Getting started
 
-=== Publish-subscribe
+== Publish-subscribe
 
 Publish-subscribe is a simple communication pattern where a subscriber receives messages from a publisher (and conversely a publisher sends messages to subscribers). For instance:
 
