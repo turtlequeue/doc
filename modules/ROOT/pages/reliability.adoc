@@ -25,8 +25,9 @@ Because of this feature some consumers could see messages out-of-order, dependin
 
 When the tradeof is between reliability and performance we will always choose reliability by default. This means that your commands are always persisted, not just kept in-memory before we acknowledge a message to be sent.
 
-
 === Positive Acknowledge
+
+When a subscriber has consumed a message successfully, it will send an acknowledgement request to the TurtleQueue servers, who will mark the message as successfully delivered. It will not be redelivered again to the subscribers.
 
 === Negative Acknowledge
 
