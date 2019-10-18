@@ -24,3 +24,17 @@ If after sending a message to a recipient we do not get an acknowledgement respo
 Because of this feature some consumers could see messages out-of-order, depending on the failures to process messages. This includes the case where a client disconnects while processing messages and fails to acknowledge them.
 
 When the tradeof is between reliability and performance we will always choose reliability by default. This means that your commands are always persisted, not just kept in-memory before we acknowledge a message to be sent.
+
+
+=== Positive Acknowledge
+
+=== Negative Acknowledge
+
+
+NOTE: Use negative acknowledgement prior to acknowledgement timeout. Negative acknowledgement controls re-delivery of individual messages more precisely, and avoids invalid redeliveries when the message processing time exceeds the acknowledgement timeout.
+
+
+=== Acknowledgement timeout
+
+When a message is not consumed successfully, and you want to trigger an automatic redelivery of the message, the default behavior is to rely on a timeout. There is an automatic re-delivery mechanism in place when the message takes too long to acknowledge (by default 10 seconds).
+The timeout can be configured to be greater (but nor lower).
