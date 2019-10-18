@@ -6,17 +6,21 @@
 When sending a message, you want guarantees that it will arrive to it's destination.
 The only way to be certain that the message arrived, is to have an acknowledgement sent from the recipient.
 
-Acknowledgement is a built-in feature in TurtleQueue's SDK. For ease of use we automatically acknowledge the messages once your callback has been run, but you can control it manually yourself.
+Acknowledgement is a built-in feature in TurtleQueue's SDK. For ease of use we automatically acknowledge the messages once your callback has been run, unless it threw an Exception, but you can control it manually yourself.
 
 There are two steps to do so:
 
-1. turn off `autoAck`
+1. turn off `autoAck` when making a Turtle instance
 
-2. call the acknoledge manually for every message
+
+2. call the acknowledge manually for every message susccesfully processed and the non-acknowledge for every message that has to be processed again
+
 
 3. (optional) adjust the acknowledge timeout
 
 
 If after sending a message to a recipient we do not get an acknowledgement response withing the alloted timeout, the message will be sent again for delivery, until it is finally acknowledged.
+
+Because of this feature some consumers could see messages out-of-order, depending on the failures to process messages. This includes the case where a client disconnects while processing messages and fails to acknowledge them.
 
 When the tradeof is between reliability and performance we will always choose reliability by default. This means that your commands are always persisted, not just kept in-memory before we acknowledge a message to be sent.
