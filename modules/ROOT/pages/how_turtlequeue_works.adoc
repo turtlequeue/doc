@@ -26,6 +26,7 @@ Some of the tech we use and love:
 - Clojure
 - Kubernetes
 - CircleCI
+- and many others!
 
 I am in no way affiliated with any of the above products, however nothing would have been possible without these. Kudos!
 
