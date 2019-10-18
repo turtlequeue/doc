@@ -30,11 +30,17 @@ When the tradeof is between reliability and performance we will always choose re
 
 === Negative Acknowledge
 
+When a consumer does not consume a message successfully at a time, and wants to consume the message again, the consumer can send a negative acknowledgement to the broker, and then the broker will redeliver the message.
 
-NOTE: Use negative acknowledgement prior to acknowledgement timeout. Negative acknowledgement controls re-delivery of individual messages more precisely, and avoids invalid redeliveries when the message processing time exceeds the acknowledgement timeout.
+Messages can be negatively acknowledged one by one or cumulatively, which depends on the consumption subscription mode.
 
+In the exclusive and failover subscription modes, consumers only negatively acknowledge the last message they have received.
+
+In the shared and Key_Shared subscription modes, you can negatively acknowledge messages individually.
 
 === Acknowledgement timeout
 
 When a message is not consumed successfully, and you want to trigger an automatic redelivery of the message, the default behavior is to rely on a timeout. There is an automatic re-delivery mechanism in place when the message takes too long to acknowledge (by default 10 seconds).
 The timeout can be configured to be greater (but nor lower).
+
+NOTE: Whenever possible, prefer using the negative acknowledgement instead of the acknowledgement timeout. Negative acknowledgement allow re-processing the message faster and avoids invalid redeliveries when the message processing time exceeds the acknowledgement timeout.
