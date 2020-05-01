@@ -22,11 +22,11 @@ TurtleQueue network infrastructure is comprised of several parts, all playing an
 
 Some of the tech we use and love:
 
-- Node.js
+- Node.js / TypeScript
 - Clojure
 - Kubernetes
-- CircleCI
-- and many others!
+- Apache Pulsar
+- PostgreSQL
 
 I am in no way affiliated with any of the above products, however nothing would have been possible without these. Kudos!
 
