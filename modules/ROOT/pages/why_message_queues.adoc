@@ -1,0 +1,88 @@
+This sections explains the benefits of message queues, and the specifics of TurtleQueue.
+
+# Why turtlequeue
+
+
+## Why message queues
+
+In order to understand what TurtleQueue _is_ we must understand what is the state of the art in messaging systems.
+Let's take the hypothetical example of a very simple CRUD app. It has two endpoints:
+- GET
+
+
+Starts it's life with
+
+
+
+Now that we know
+
+- reliability in the face of failure
+- flexiblity to fight complexity by use of decoupling
+- scalability with the ability to absorb and distribute the load
+- observability
+
+Some things that would be hard to do become very easy, like:
+- delay processing of messages
+-
+
+
+RabbitMQ
+
+## evolutions of the latest message queues
+
+Since messages are persisted and not lost once they have been consumed, it inherits the ability to re-read messages. This allows for interesting architectures (ETL, lambda architecture).
+
+## limitations of current message queues
+
+
+# Now we have great messaging options
+
+and now we have had many nice solutions:
+
+- Apache Kafka
+- Apache Pulsar Functions, which have the same benefits of lambda / serverless functions regarding ease of deployment, but can hold state.
+- offload to a different store like Apache Pulsar (using S3 for instance)
+
+...But this comes at a cost. These need to be configured, deployed, maintained, scaled, updated...
+
+Also there are inevitable some very repetitive applications that have to be built on top of these.
+
+I do not count how many times I built or witnessed a simple REST app being build that does nothing but put messages onto a queue. Unfortunate but necessary as these systems are not built for the web.
+
+Although these systems do provide some sort of monitoring,
+advanced dashboard. Plans for tracing built-in.
+
+And then, the most important of them all. Because it is expensive to make these named queues, and because names can only take us so far,
+There are invariably some parameters that will
+
+Don't get me wrong, good names are great.
+But when you rely on naming only for your channels the structure of the messaging can be very inflexible, and a consequence is that the queues are not used to their full potential. Which is what we were trying to solve in the first place!
+
+
+## Come turtlequeue
+
+TurtleQueue is build on top of the state of the art message broker Apache Pulsar, and inherits a lot of it's characteristics.
+It does not try to solve the impossible, everything TurtleQueue does is _already_ possible with modern messages brokers.
+
+_However_ the upfront investment and continuous effort required to use these tools, along with their inability to unlock the value of message queues makes me believe that there is room for TurtleQueue.
+
+Turtlequeue
+
+TurtleQueue adds unique features as well
+But it also provides it's own value:
+- provides the same
+- it is hosted so all the above regarding deployments are not your problem. It can be hosted in a private cloud as well if needed (our entire infrastructure runs on kubernetes)
+-
+
+But that's not all! TurtleQueue also provides additional flexibility
+- it provides additional
+
+
+
+### References
+
+Rich
+
+
+Zach Tellman "Queues separate the 'What' from the 'When'"
+https://youtu.be/1bNOO3xxMc0?t=206
