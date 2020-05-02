@@ -43,7 +43,7 @@ Apache Pulsar (upon which TurtleQueue is built) uses the concept of a cursor, th
 
 IMAGE
 
- In addition they offer advanced features (KStreams from Apache Kafka, Functions from Apache Pulsar and others)
+On top of these log-queue they offer other advanced features (KStreams from Apache Kafka, Functions from Apache Pulsar...).
 
 ## Come TurtleQueue
 
@@ -53,15 +53,20 @@ These systems are very complex and require an upfront investment before being us
 Their different parts need to be understood, installed, secured, monitored, scaled, updated...
 Only them can applications use them.
 
+They also all share one fundamental construction the different queue names is everything that identifies where a message should go.
+These names are usually defined by the programmer upfront, and exctly _how_ a message ends up in a named queue or another is left to the application programmer entirely.
+
+This often results in overly coarsely-grained names from a business point of view because in doubt all data is shoveled in the same place.
+And this results in overly fine names from a technical point of view (with usual suffix like -dlq -retry -response).
+
+I believe that in a lot of cases this is too unflexible, and that the role of a messaging platform should be to help support different messaging patterns out of the box.
+
+
 TurtleQueue aims to minimize all of the above:
 - have a collection of examples for common use cases
 - start without installing anything, and move to an on-premises installation later if needed
 - provide visual monitoring and feedback via it's dashboard
 
-They also all share one fundamental construction the different queue names is everything that identifies where a message should go.
-These names are usually defined by the programmer upfront, and exctly _how_ a message ends up in a named queue or another is left to the application programmer entirely, leaving this complex part completely up to him.
-
-I believe that in a lot of cases this is too unflexible, and that the role of a messaging platform should be to help support different messaging patterns out of the box.
 
 IMAGE
 
