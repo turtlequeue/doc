@@ -59,47 +59,22 @@ These systems are very complex and require an upfront investment before being us
 Their different parts need to be understood, installed, secured, monitored, scaled, updated...
 Only them can applications use them.
 
+TurtleQueue aims to minimize all of the above:
+- have a collection of examples for common use cases
+- start without installing anything, and move to an on-premises installation later if needed
+- provide visual monitoring and feedback via it's dashboard
+
 They also all share one fundamental construction the different queue names (or channels, tags, hashtags, topics) is everything that identifies where a message should go.
 These names are usually defined by the programmer upfront, and exctly _how_ a message ends up in a named queue or another is left to the application programmer entirely, leaving this complex part completely up to him.
 
-I believe that in a lot of cases this is too unflexible, and as the role of the message queue is to move data from one place to another.
+I believe that in a lot of cases this is too unflexible, and that the role of a messaging platform should be to help support different messaging patterns out of the box.
 
-even with the bandaid provided
-. Some patches exist in some message queues to try to alleviate the issue (like regexes or filtering on streams).
+IMAGE
 
-However the value of having an immutable append-only log is not entirely captured in a lot of cases because some of the increased flexibility it chould afford the programmer is lost to the rigid structure of named tubes - aka "plumbing".
-This is the flexibility we were trying to get in the first place!
+So in the above image subscribers have expressed their interest in message. New messages will get delivered to their inbox, depending on specific criteria. These can be a simple name or more complex filters or patterns.
 
-## Come turtlequeue
-
-TurtleQueue is build on top of the state of the art message broker Apache Pulsar, and inherits a lot of it's characteristics.
-
-It does not try to solve the impossible, everything TurtleQueue does is _already_ possible with modern messages brokers.
-
-_However_ the upfront investment and continuous effort required to use these tools, along with their inability to unlock the value of message queues makes me believe that there is room for TurtleQueue.
-
-Turtlequeue
-
-TurtleQueue adds unique features as well
-But it also provides it's own value:
-- provides the same
-- it is hosted so all the above regarding deployments are not your problem. It can be hosted in a private cloud as well if needed (our entire infrastructure runs on kubernetes)
--
-
-
-There are roughly two categories where
-
-### Ease of use
-Lower upfront costs. Higher long-term velocity
-
-### Improved
-Better introspection, improved debugging
-
-
-### References
-
-Rich?
-
-
-Zach Tellman "Queues separate the 'What' from the 'When'"
-https://youtu.be/1bNOO3xxMc0?t=206
+TurtleQueue aims to support common use cases:
+- simple GET / POST requests from a web client without having to install a library
+- updating a subscriber's criteria on the fly, while keeping previous messages
+- request/response patterns
+- delayed or periodic background jobs
