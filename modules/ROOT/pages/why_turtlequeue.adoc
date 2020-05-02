@@ -2,28 +2,29 @@ This article explains the benefits of message queues and their evolution, up to 
 
 ## TurtleQueue
 
-In order to understand why TurtleQueue, we need to look back at what are queues, their benefits, and the current state of the art.
+In order to understand TurtleQueue purpose, we need to look back at what message queues are.
 
 ### Message queues
 
-Message queues / brokers are a big topic. I am assuming at least a passing familiarity with these.
-However the core idea is simple.
-Programs need to exchange data between them continuously.
-One way to move data from one place to another is to use a message queues.
+Message queues / message brokers are a big topic, with many variations not discussed here. However the core idea is simple.
+Programs need to exchange data between them all the time. One good way to move data from one place to another is to use message queues.
 
-There are many differences between queues (broker-based, smart clients, persistent or not, streaming or batching etc.) but the core idea is that messages are put into named queues. Named queues work similarly to hashtags.
+There are too many differences between systems to cover here (queue or publish-subscribe model, smart broker or smart clients, persistent or not, distributed or not, streaming or batching ..). However, they all share similar principles: messages are put into named queues.
 
-So you have producers that have message and choose a tag to publish the message to a named queue.
-And at the other end of the queue you have a consumer that is consuming messages from that queue.
+These are called diferently depending on the specific technology used (channels, topics).
+They can be described by having producers and consumers putting and getting messages from a specific queue (or channel, or topic)..
 
 IMAGE
 
+So you have producers that have message and choose a named queue to publish the message to.
+And at the other end of the queue you have a consumer that is consuming messages from that specific queue.
 
 This is a very useful to do, because the producers and the consumers are now decoupled.
 
-You can have multiple consumers. Or none. Multiple producers. Or none. You can add or remove some at any time.
-You can restart the consumers and producers independently without them noticing, since the messages will be kept in the queue until consumed.
-You can peek at the queue and see how many messages it holds. You can process messages straight away, or in the background, or periodically in large groups.
+Several consumers or producers can coexist, along with several named queues.
+This decoupling means consumers and producers do not need to know about each other. They can be updated independently. The messages will be kept in the queue until consumed.
+
+It is possible to peek at the queue and see how many messages it holds. Messages can be processed straight away, or in the background, or periodically in large groups.
 
 Message queues decouple the what from the when, and reduce the knowledge needed for an application to work.
 This gives us:
@@ -34,12 +35,11 @@ This gives us:
 
 All these benefits explain the popularity of message queues, like RabbitMQ, zeroMQ, ActiveMQ and many others.
 
-
 ## Distributed log
 
 More recently, message queues have had one major evolution. Their internal representation of the messages are now centered around an append-only log. This has important performance implications, and because messages are kept in store instead of being discarded after being consumed, it did open up new possibilities for application developers.
 
-New architectures have emerged and are still being improved upon (lambda architecture and ETL friends).
+New architectures have emerged and are still being improved upon (the lambda architecture and ETL friends).
 
 So now you still have producers that push messages onto a named queue, but consumers can decide which part they want to read. They can start from the incoming messages, or
 
@@ -62,7 +62,7 @@ TurtleQueue aims to minimize all of the above:
 - start without installing anything, and move to an on-premises installation later if needed
 - provide visual monitoring and feedback via it's dashboard
 
-They also all share one fundamental construction the different queue names (or channels, tags, hashtags, topics) is everything that identifies where a message should go.
+They also all share one fundamental construction the different queue names is everything that identifies where a message should go.
 These names are usually defined by the programmer upfront, and exctly _how_ a message ends up in a named queue or another is left to the application programmer entirely, leaving this complex part completely up to him.
 
 I believe that in a lot of cases this is too unflexible, and that the role of a messaging platform should be to help support different messaging patterns out of the box.
