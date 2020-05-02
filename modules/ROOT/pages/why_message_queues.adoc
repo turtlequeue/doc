@@ -1,6 +1,6 @@
 This sections explains the benefits of message queues, and the specifics of TurtleQueue.
 
-# Why turtlequeue
+## Why turtlequeue
 
 
 ## Why message queues
@@ -35,7 +35,7 @@ Since messages are persisted and not lost once they have been consumed, it inher
 ## limitations of current message queues
 
 
-# Now we have great messaging options
+## Now we have great messaging options
 
 and now we have had many nice solutions:
 
