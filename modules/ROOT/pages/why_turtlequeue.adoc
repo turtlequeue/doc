@@ -1,3 +1,5 @@
+On plumbing and ..
+
 This sections explains the benefits of message queues, and the specifics of TurtleQueue.
 
 ## Why turtlequeue
@@ -43,37 +45,39 @@ New architectures have emerged and are still being improved upon (lambda archite
 
 So now you still have producers that push messages onto a named queue, but consumers can decide which part they want to read. They can start from the incoming messages, or
 
-Apache Pulsar (upon which TurtleQueue is built) uses the concept of a cursor, that advances to consume the next message. But the cursor's position can be changed to something else, like the beginning or the queue.
+Apache Pulsar (upon which TurtleQueue is built) uses the concept of a cursor, that advances to consume the next message. But the cursor's position can be changed to something else, like the beginning of the queue.
 
 IMAGE
-
 
 This approach was popularized by Apache Kafka and other technologies like Apache Pulsar.
 
 
-## What is the catch?
+## Plumbing - What is the catch?
 
-So message
-and now we have had many nice solutions:
+This all seems all very good, especially since some of these offer additional functions that were not mentioned here. Some of the most interesting are:
+- KStreams from Apache Kafka
+- Functions from Apache Pulsar, which are serverless functions but can be stateful
 
-- Apache Kafka
-- Apache Pulsar Functions, which have the same benefits of lambda / serverless functions regarding ease of deployment, but can hold state.
-- offload to a different store like Apache Pulsar (using S3 for instance)
+All of this, however, comes at a cost. These systems are very complex. Their different parts need to be understood, installed, secured, monitored, scaled, updated... All that even before building applications using them.
 
-...But this comes at a cost. These need to be configured, deployed, maintained, scaled, updated...
+They also have a fundamental construct - all the messages have to be put onto queues that are named.
+These names are usually defined by the programmer upfront, and _how_ a message ends up in a named queue or another is left to the application programmer.
 
-Also there are inevitable some very repetitive applications that have to be built on top of these.
+I believe that in a lot of cases this is too unflexible. Some patches exist in some message queues to try to alleviate the issue (like regexes or filtering on streams).
 
-I do not count how many times I built or witnessed a simple REST app being build that does nothing but put messages onto a queue. Unfortunate but necessary as these systems are not built for the web.
+However the value of having an immutable append-only log is not entirely captured in a lot of cases because some of the increased flexibility it chould afford the programmer is lost to the rigid structure of named tubes - aka "plumbing".
 
-Although these systems do provide some sort of monitoring,
-advanced dashboard. Plans for tracing built-in.
 
-And then, the most important of them all. Because it is expensive to make these named queues, and because names can only take us so far,
-There are invariably some parameters that will
+
+
 
 Don't get me wrong, good names are great.
 But when you rely on naming only for your channels the structure of the messaging can be very inflexible, and a consequence is that the queues are not used to their full potential. Which is what we were trying to solve in the first place!
+
+
+
+Although these systems do provide some sort of monitoring,
+advanced dashboard. Plans for tracing built-in.
 
 
 ## Come turtlequeue
