@@ -49,40 +49,31 @@ Apache Pulsar (upon which TurtleQueue is built) uses the concept of a cursor, th
 
 IMAGE
 
-This approach was popularized by Apache Kafka and other technologies like Apache Pulsar.
+This approach was popularized by Apache Kafka and other technologies like Apache Pulsar. In addition they offer advanced features (KStreams from Apache Kafka, Functions from Apache Pulsar and others)
 
+## Come TurtleQueue
 
-## Plumbing - What is the catch?
+These great systems have two main downsides.
 
-This all seems all very good, especially since some of these offer additional functions that were not mentioned here. Some of the most interesting are:
-- KStreams from Apache Kafka
-- Functions from Apache Pulsar, which are serverless functions but can be stateful
+These systems are very complex and require an upfront investment before being used.
+Their different parts need to be understood, installed, secured, monitored, scaled, updated...
+Only them can applications use them.
 
-All of this, however, comes at a cost. These systems are very complex. Their different parts need to be understood, installed, secured, monitored, scaled, updated... All that even before building applications using them.
+They also all share one fundamental construction the different queue names (or channels, tags, hashtags, topics) is everything that identifies where a message should go.
+These names are usually defined by the programmer upfront, and exctly _how_ a message ends up in a named queue or another is left to the application programmer entirely, leaving this complex part completely up to him.
 
-They also have a fundamental construct - all the messages have to be put onto queues that are named.
-These names are usually defined by the programmer upfront, and _how_ a message ends up in a named queue or another is left to the application programmer.
+I believe that in a lot of cases this is too unflexible, and as the role of the message queue is to move data from one place to another.
 
-I believe that in a lot of cases this is too unflexible. Some patches exist in some message queues to try to alleviate the issue (like regexes or filtering on streams).
+even with the bandaid provided
+. Some patches exist in some message queues to try to alleviate the issue (like regexes or filtering on streams).
 
 However the value of having an immutable append-only log is not entirely captured in a lot of cases because some of the increased flexibility it chould afford the programmer is lost to the rigid structure of named tubes - aka "plumbing".
-
-
-
-
-
-Don't get me wrong, good names are great.
-But when you rely on naming only for your channels the structure of the messaging can be very inflexible, and a consequence is that the queues are not used to their full potential. Which is what we were trying to solve in the first place!
-
-
-
-Although these systems do provide some sort of monitoring,
-advanced dashboard. Plans for tracing built-in.
-
+This is the flexibility we were trying to get in the first place!
 
 ## Come turtlequeue
 
 TurtleQueue is build on top of the state of the art message broker Apache Pulsar, and inherits a lot of it's characteristics.
+
 It does not try to solve the impossible, everything TurtleQueue does is _already_ possible with modern messages brokers.
 
 _However_ the upfront investment and continuous effort required to use these tools, along with their inability to unlock the value of message queues makes me believe that there is room for TurtleQueue.
