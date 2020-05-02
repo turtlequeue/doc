@@ -72,3 +72,19 @@ Therefore TurtleQueue aims to:
 - allow the user to not only use names, but also other criteria
 - have built-in support for common messaging patterns (delayed messages, periodic jobs)
 - provide visual monitoring and feedback via it's dashboard
+
+
+CTA=>
+
+In the next part, you get hands-on
+
+If you prefer to dive into code straight away
+
+
+NEXT PART - TUTORIAL
+
+Use a simple publish-subscribe playground
+(TODO see what kubernetes used for their tutorial??? )
+
+Explanations on the left, code on the right?
+Or make a small react app for this in the dashboard with visulization?
