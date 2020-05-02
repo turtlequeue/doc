@@ -61,19 +61,12 @@ And this results in overly fine names from a technical point of view (with usual
 
 I believe that in a lot of cases this is too unflexible, and that the role of a messaging platform should include support for these.
 
-Therefore TurtleQueue aims to:
-- minimize the cost or using queues: start immediately without installing anything, and move to an on-premises installation later if needed
-- allow the user to not only use names, but also other criteria
-- have built-in support for common messaging patterns
-- provide visual monitoring and feedback via it's dashboard
-
-
 IMAGE
 
 So in the above image subscribers have expressed their interest in message. New messages will get delivered to their inbox, depending on specific criteria. These can be a simple name or more complex filters or patterns.
 
-TurtleQueue aims to support common use cases:
-- simple GET / POST requests from a web client without having to install a library
-- updating a subscriber's criteria on the fly, while keeping previous messages
-- request/response patterns
-- delayed or periodic background jobs
+Therefore TurtleQueue aims to:
+- minimize the cost or using queues: start immediately without installing anything, and move to an on-premises installation later if needed
+- allow the user to not only use names, but also other criteria
+- have built-in support for common messaging patterns (delayed messages, periodic jobs)
+- provide visual monitoring and feedback via it's dashboard
