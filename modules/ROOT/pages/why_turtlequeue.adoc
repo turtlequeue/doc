@@ -63,7 +63,9 @@ I believe that in a lot of cases this is too unflexible, and that the role of a 
 
 IMAGE
 
-So in the above image subscribers have expressed their interest in message. New messages will get delivered to their inbox, depending on specific criteria. These can be a simple name or more complex filters or patterns.
+So in the above image subscribers have expressed their interest in message. New messages will get delivered to their inbox, depending on specific criteria. These can be a simple channel like the aforementioned technologies, or it can be additional filters or patterns.
+
+This allows the consumer to get the benefits of message queues without being specifically tied to their name.
 
 Therefore TurtleQueue aims to:
 - minimize the cost or using queues: start immediately without installing anything, and move to an on-premises installation later if needed
