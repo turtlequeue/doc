@@ -59,12 +59,12 @@ These names are usually defined by the programmer upfront, and exctly _how_ a me
 This often results in overly coarsely-grained names from a business point of view because in doubt all data is shoveled in the same place.
 And this results in overly fine names from a technical point of view (with usual suffix like -dlq -retry -response).
 
-I believe that in a lot of cases this is too unflexible, and that the role of a messaging platform should be to help support different messaging patterns out of the box.
+I believe that in a lot of cases this is too unflexible, and that the role of a messaging platform should include support for these.
 
-
-TurtleQueue aims to minimize all of the above:
-- have a collection of examples for common use cases
-- start without installing anything, and move to an on-premises installation later if needed
+Therefore TurtleQueue aims to:
+- minimize the cost or using queues: start immediately without installing anything, and move to an on-premises installation later if needed
+- allow the user to not only use names, but also other criteria
+- have built-in support for common messaging patterns
 - provide visual monitoring and feedback via it's dashboard
 
 
