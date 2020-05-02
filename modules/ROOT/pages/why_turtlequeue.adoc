@@ -1,8 +1,6 @@
-On plumbing and ..
+This article explains the benefits of message queues and their evolution, up to the philosophy behind TurtleQueue.
 
-This sections explains the benefits of message queues, and the specifics of TurtleQueue.
-
-## Why turtlequeue
+## TurtleQueue
 
 In order to understand why TurtleQueue, we need to look back at what are queues, their benefits, and the current state of the art.
 
