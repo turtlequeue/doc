@@ -32,9 +32,9 @@ All these benefits explain the popularity of message queues, like RabbitMQ, zero
 
 ## Distributed log
 
-More recently, message queues have had one major evolution. Their internal representation of the messages are now centered around an append-only log. This has important performance implications, and because messages are kept in store instead of being discarded after being consumed, it did open up new possibilities for application developers.
+More recently, message queues have had one major evolution, that was popularized by Apache Kafka. Their internal representation of the messages are now centered around an append-only log. This has important performance implications, and because messages are kept in store instead of being discarded after being consumed, it did open up new possibilities for application developers.
 
-New architectures have emerged and are still being improved upon (the lambda architecture and ETL friends).
+New architectures have emerged and are still being improved upon, like the lambda architecture..
 
 So now you still have producers that push messages onto a named queue, but consumers can decide which part they want to read. They can start from the incoming messages, or from the start of the topic.
 
@@ -42,7 +42,7 @@ Apache Pulsar (upon which TurtleQueue is built) uses the concept of a cursor, th
 
 IMAGE
 
-This approach was popularized by Apache Kafka and other technologies like Apache Pulsar. In addition they offer advanced features (KStreams from Apache Kafka, Functions from Apache Pulsar and others)
+ In addition they offer advanced features (KStreams from Apache Kafka, Functions from Apache Pulsar and others)
 
 ## Come TurtleQueue
 
