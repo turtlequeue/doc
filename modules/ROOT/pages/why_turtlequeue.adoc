@@ -16,22 +16,17 @@ They can be described by having producers and consumers putting and getting mess
 
 IMAGE
 
-So you have producers that have message and choose a named queue to publish the message to.
+So you have producers that have messages and choose a named queue to send the message to.
 And at the other end of the queue you have a consumer that is consuming messages from that specific queue.
 
-This is a very useful to do, because the producers and the consumers are now decoupled.
-
-Several consumers or producers can coexist, along with several named queues.
+This is a very useful to do, because the producers and the consumers are now decoupled, isolated by the queues.
 This decoupling means consumers and producers do not need to know about each other. They can be updated independently. The messages will be kept in the queue until consumed.
 
+Several consumers or producers can coexist, along with several named queues.
 It is possible to peek at the queue and see how many messages it holds. Messages can be processed straight away, or in the background, or periodically in large groups.
 
-Message queues decouple the what from the when, and reduce the knowledge needed for an application to work.
-This gives us:
-- reliability in the face of failure
-- increased flexibility by use of decoupling
-- increased scalability
-- increased observability
+Message queues decouple the _what_ from the _when_, and reduce the knowledge needed for an application to work.
+This gives us increased reliability and observability.
 
 All these benefits explain the popularity of message queues, like RabbitMQ, zeroMQ, ActiveMQ and many others.
 
@@ -41,7 +36,7 @@ More recently, message queues have had one major evolution. Their internal repre
 
 New architectures have emerged and are still being improved upon (the lambda architecture and ETL friends).
 
-So now you still have producers that push messages onto a named queue, but consumers can decide which part they want to read. They can start from the incoming messages, or
+So now you still have producers that push messages onto a named queue, but consumers can decide which part they want to read. They can start from the incoming messages, or from the start of the topic.
 
 Apache Pulsar (upon which TurtleQueue is built) uses the concept of a cursor, that advances to consume the next message. But the cursor's position can be changed to something else, like the beginning of the queue.
 
