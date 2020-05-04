@@ -20,3 +20,11 @@
 
 
 == Geolocation
+
+
+
+Use all of these by following the walk-through for you language's SDK:
+
+xref:js_sdk.adoc[image:js_logo.png[JS SDK,150,150]]
+xref:clj_sdk.adoc[image:clj_logo.png[Clojure SDK,150,150]]
+xref:rest_api.adoc[image:http_logo.png[REST API,150,150]]
