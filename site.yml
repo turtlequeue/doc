@@ -1,8 +1,10 @@
+# antora playbook
 site:
   title: TurtleQueue documentation
   # the 404 page and sitemap files only get generated when the url property is set
   url: https://turtlequeue.com/docs
 content:
+  edit_url: 'https://github.com/turtlequeue/doc/'
   sources:
   - url: .
     branches: HEAD
@@ -11,3 +13,4 @@ ui:
   bundle:
     url: ./ui-bundle.zip
     snapshot: true
+
