@@ -2,28 +2,66 @@
 
 == PubSub or queueing
 
-== Hosted
+Hybrid model that allows performant queueing or PubSub.
 
-== Regex
+== Streaming or batching
+Not limited to one mode or another
+
+== Hosted or on Premises
+
+Hit the ground running with our hosted solution. Transition to an on-premises hosting when you need it.
+
+== Channel and ChanneRegex
+
+Publish in named channels or use (full POSIX) regexes. This also composes with other features like geo-location.
 
 == Workspaces
 
-Workspaces allow you to separate your
-When you log in, a default workspace is created for you,
+Workspaces allow you to separate your work. Usually used to separate integration and production. Or every developer could use a separate workspace.
+
+Priorities, rate of messages and other and access rights can also be enforced at the workspace level, provising granularity.
+
+When you log in, a default workspace is created for you, and credentials for this workspace are created.
 
 == Priorities and quotas
 
+It is often the case that some messages are more important than others. TurtleQueue allows you to mark these urgent messages so they are treated faster.
+
 == Scale
+
+Millions of messages on millions of topics.
+
+
+== Delayed messages
+Send a message at a later date. Repeat messages periodically.
 
 == Performance
 
+Low-latency for your messages.
+TODO public benchmark
+
 == Visualization
+
+Going fast is not useful if you cannot see where you are going. Are the messages treated fast enough or are they piling in the backlogs? How many clients are subscribing on a topic? How many messages have been in transit in the past hour? What is the last message on a given queue?
+
+The dashboard presents all these in a graphic way.
 
 == Tracing
 
+Visualization is about the bulk of messages.
+Tracing allows developpers to follow not only a message on a queue, but allows linking a complete path composed of multiple events. Extremely useful for debugging and understanding performance profiles.
 
 == Geolocation
 
+Filtering not only by #channel but also by geo-location!
+
+== JsonPath
+
+A lightweight filtering language, built in TurtleQueue. Allows replaying only the data you are interested in. Assumes payloads in the JSON format.
+
+== SQL
+
+A more full-fledged query language also built in TurtleQueue. Allows querying the data stored in a very flexible way. A schema must be defined up-front.
 
 
 Use all of these by following the walk-through for you language's SDK:
