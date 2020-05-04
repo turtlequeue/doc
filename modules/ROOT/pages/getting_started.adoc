@@ -18,8 +18,8 @@ There are too many differences between systems to cover here (queue or publish-s
 These are called diferently depending on the specific technology used (channels, topics).
 They can be described by having producers and consumers putting and getting messages from a specific queue (or channel, or topic)..
 
-image::rabbit.png[Example of a Message queue: RabbitMQ]
-
+image::rabbit.png[RabbitMQ]
+.Example of a Message queue: RabbitMQ
 
 So you have publishers that have messages and choose a named queue to send the message to.
 And at the other end of the queue you have a consumer that is consuming messages from that specific queue.
@@ -46,14 +46,14 @@ They can start from the incoming messages, or from the start of the topic. They 
 
 Apache Pulsar (upon which TurtleQueue is built) uses the concept of a cursor, that advances to consume the next message. But the cursor's position can be changed to something else, like the beginning of the queue.
 
-image::pulsar.png[Newer log-based broker: Apache Pulsar and Apache Kafka]
-.A mountain sunset
+image::pulsar.png[Pulsar]
+.Newer log-based broker: Apache Pulsar and Apache Kafka
 
 On top of these log-queue they offer other advanced features (KStreams from Apache Kafka, Functions from Apache Pulsar...).
 
 ## Come TurtleQueue
 
-These great systems have two main downsides.
+These systems are great! However they have two downsides that TurtleQueue aims to adress.
 
 These systems are very complex and require an upfront investment before being used.
 Their different parts need to be understood, installed, secured, monitored, scaled, updated...
@@ -67,7 +67,9 @@ And this results in overly fine names from a technical point of view (with usual
 
 I believe that in a lot of cases this is too unflexible, and that the role of a messaging platform should include support for these.
 
-IMAGE
+
+image::turtlequeue.png[TurtleQueue]
+.TurtleQueue: flexible routing
 
 So in the above image subscribers have expressed their interest in message. New messages will get delivered to their inbox, depending on specific criteria. These can be a simple channel like the aforementioned technologies, or it can be additional filters or patterns.
 
