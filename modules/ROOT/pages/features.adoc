@@ -8,6 +8,9 @@
 
 == Workspaces
 
+Workspaces allow you to separate your
+When you log in, a default workspace is created for you,
+
 == Priorities and quotas
 
 == Scale
