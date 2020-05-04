@@ -1,4 +1,7 @@
-* xref:getting_started.adoc[image:icon-home.svg[]Getting started]
+* image:icon-home.svg[]Getting started
+** xref:getting_started.adoc[What is TurtleQueue]
+** xref:features.adoc[Features]
+
 * xref:how_turtlequeue_can_help.adoc[image:icon-info.svg[]How TurtleQueue can help]
 * xref:how_turtlequeue_works.adoc[image:icon-help.svg[]How TurtleQueue works]
 * xref:comparison.adoc[image:icon-compar.svg[]Comparison with other messaging systems]
