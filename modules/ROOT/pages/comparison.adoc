@@ -2,55 +2,74 @@
 
 . Summary
 |===
-| Name | PubSub | Message Queue | Regex filtering | Geo filtering | Durable | Available in the browser | Hosted | On Premises
+| Name | PubSub | Message Queue | Regex filtering | Geo filtering | Durable or not | Available in the browser | Hosted | On Premises
 
-|RabbitMQ
-| icon:times[role="red"]
-| icon:check[role="green"]
+| TurtleQueue
+| ✅
+| ✅
+| icon:check[role="red"] (coming soon)
+| ✅
+| ✅
+| ✅
+| ✅
+| ✅
+
+| RabbitMQ
+| ❌
+| ✅
 | icon:star-half[role="orange"] (wildcard-only)
-| icon:check[role="green"]
-| icon:times[role="red"]
-| icon:times[role="red"]
-| icon:times[role="red"]
-| icon:times[role="green"]
+| ❌
+| ✅
+| ❌
+| ❌
+| ✅
 
 | Apache Kafka
-| icon:times[role="green"]
-| icon:check[role="green"]
-| icon:check[role="green"]
-| icon:times[role="red"]
-| icon:check[role="green"]
-| icon:check[role="red"]
-| icon:times[role="red"]
-| icon:times[role="green"]
+| ✅
+| ✅
+| ✅
+| ❌
+| ❌
+| ❌
+| ❌
+| ✅
 
 | Google Pubsub
-| icon:times[role="green"]
-| icon:check[role="green"]
-| icon:check[role="red"]
-| icon:times[role="red"]
-| icon:check[role="green"]
-| icon:times[role="red"]
-| icon:times[role="green"]
-| icon:times[role="red"]
+| ✅
+| ✅
+| ✅
+| ❌
+| ❌
+| ✅
+| ❌
+| ❌
 
-| Amazon SNS
-| icon:times[role="green"]
-| icon:check[role="red"]
-| icon:star-half[role="orange"] (prefix matching)
-| icon:check[role="red"]
-| icon:check[role="red"]
-| icon:times[role="red"]
-| icon:times[role="green"]
-| icon:times[role="red"]
-
-|TurtleQueue
-| icon:check[role="green"]
-| icon:check[role="green"]
-| icon:check[role="red"] (coming soon)
-| icon:check[role="green"]
-| icon:check[role="green"]
-| icon:check[role="green"]
-| icon:check[role="green"]
-| icon:check[role="green"]
 |===
+
+
+
+PubSub::
+Can the platform be user with the semantics of a Publish/Subscribe model?
+
+Message Queue::
+Can the platform present the semantics of a message queue?
+
+Regex filtering::
+Can the user use a regex to choose where the messages will be published?
+
+Geo filtering::
+Can the user use a latitude/longitude/radius to decide where the messages will be published?
+
+Durable or not::
+Can the messages in a channel/topic/subscription be configured to be persisted to disk and not deleted after being acknowledged? Conversely, can they be configured to be deleted?
+
+For instance Apache Kafka will always keep messages, even though the retention period is configurable. Google PubSub has pre-set rules on how long messages are kept.
+
+Available in the browser::
+can the platform be used directly from a browser or app?
+
+Hosted::
+is the platform available without the user having to install it on a server?
+
+On Premises::
+Can the platform be installed on a customer's server?
