@@ -4,9 +4,9 @@ site:
   # the 404 page and sitemap files only get generated when the url property is set
   url: https://turtlequeue.com/docs
 content:
-  edit_url: 'https://github.com/turtlequeue/doc/'
   sources:
   - url: .
+    edit_url: 'https://github.com/turtlequeue/doc/tree/{refname}/{path}'
     branches: HEAD
     start_path: /
 ui:
